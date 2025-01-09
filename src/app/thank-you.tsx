@@ -5,15 +5,17 @@ import { CheckCircle } from 'lucide-react'
 import { useSubscription } from './subscription-provider'
 
 
-export function ThankYou(){
-    const {state, setStep, resetInfo} = useSubscription();
 
-    const handleHomeClick = () => {
-        resetInfo();
-        setStep(1)
-    }
+export function ThankYou() {
 
-    return(
+   const { state, setStep, resetInfo } = useSubscription()
+
+   const handleHomeClick = () => {
+    resetInfo();
+    setStep(1);
+  };
+
+  return (
     <div className="text-center py-8 space-y-4">
       <div className="flex justify-center">
         <CheckCircle className="w-16 h-16 text-pink-500" />
@@ -21,7 +23,7 @@ export function ThankYou(){
       <h2 className="text-2xl font-bold">Thank you!</h2>
       <p className="text-gray-500 max-w-sm mx-auto">
         Thanks for confirming your subscription! We hope you have fun using our
-        platform. If you ever need support, please feel free to email us at
+        platform. If you ever need support, please feel free to visit us at
         https://www.frontendmentor.io/.
       </p>
       <Button
@@ -31,8 +33,6 @@ export function ThankYou(){
           Home
         </Button>
     </div>
-    )
-
-
-
+  )
 }
+

@@ -26,38 +26,41 @@ const ADD_ONS = [
 ]
 
 export function AddOnSelection() {
-    const { state, toggleAddOn, setStep } = useSubscription()
+  const { state, toggleAddOn, setStep } = useSubscription()
 
-    return (
-        <div className="space-y-6">
-            <div>
-                <h2 className="text-2xl font-bold">
-                    Pick add-ons
-                </h2>
-                <p className="text-gray-500">
-                    Add-ons help enhance your gaming experience.
-                </p>
+  return (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold">Pick add-ons</h2>
+        <p className="text-gray-500">Add-ons help enhance your gaming experience.</p>
+      </div>
+
+      <div className="space-y-4">
+        {ADD_ONS.map((addon) => (
+          <label
+            key={addon.id}
+            className={`flex items-center p-4 rounded-lg border-2 cursor-pointer
+              ${state.addOns.includes(addon.id) ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}
+          >
+            <Checkbox
+              checked={state.addOns.includes(addon.id)}
+              onCheckedChange={() => toggleAddOn(addon.id)}
+              className="mr-4"
+            />
+            <div className="flex-1">
+              <div className="font-medium">{addon.title}</div>
+              <div className="text-sm text-gray-500">{addon.description}</div>
             </div>
-
-            <div className="space-y-4">
-                {ADD_ONS.map((addOn) => (
-                    <label key={addOn.id} className={`flex items-center space-x-4 cursor-pointer
-                        ${state.addOns.includes(addOn.id) ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
-                        <Checkbox
-                            checked={state.addOns.includes(addOn.id)}
-                            onChange={() => toggleAddOn(addOn.id)}
-                        />
-                        <div>
-                            <div className="font-medium">{addOn.title}</div>
-                            <div className="text-gray-500">
-                                ${state.billingCycle === 'monthly' ? `${addOn.price.monthly}/mo` : `${addOn.price.yearly}/yr`}
-                            </div>
-                        </div>
-                    </label>
-               ) )}
+            <div className="text-blue-500">
+              +${state.billingCycle === 'monthly' 
+                ? `${addon.price.monthly}/mo`
+                : `${addon.price.yearly}/yr`}
             </div>
+          </label>
+        ))}
+      </div>
 
-        <div className="flex justify-between pt-6">
+      <div className="flex justify-between pt-6">
         <Button
           variant="ghost"
           onClick={() => setStep(state.currentStep - 1)}
@@ -71,5 +74,6 @@ export function AddOnSelection() {
         </Button>
       </div>
     </div>
-    )
+  )
 }
+

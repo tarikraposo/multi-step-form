@@ -1,8 +1,8 @@
-export type PlantType = 'Arcade' | 'Advanced' | 'Pro';
+export type PlanType = 'Arcade' | 'Advanced' | 'Pro';
 export type BillingCycle = 'monthly' | 'yearly';
 
 export interface Plan {
-    type: PlantType;
+    type: PlanType;
     price: {
         monthly: number;
         yearly: number;
@@ -29,7 +29,7 @@ export interface UserInfo {
 export interface SubscriptionState {
     currentStep: number;
     userInfo: UserInfo;
-    plan: PlantType | null;
+    plan: PlanType | null;
     billingCycle: BillingCycle;
     addOns: string[];
 }

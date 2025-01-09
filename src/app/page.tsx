@@ -1,10 +1,12 @@
+import { SubscriptionFlow } from "./subscription-flow";
 import { SubscriptionProvider } from "./subscription-provider";
-import { UserInfoForm } from "./user-info-form";
 
-export default function Home() {
+
+export default function Page() {
   return (
     <SubscriptionProvider>
-      <UserInfoForm />
-   </SubscriptionProvider>
-  );
+      <SubscriptionFlow />
+    </SubscriptionProvider>
+  )
 }
+
