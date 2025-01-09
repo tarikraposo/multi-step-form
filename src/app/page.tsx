@@ -1,6 +1,10 @@
+import { SubscriptionProvider } from "./subscription-provider";
+import { UserInfoForm } from "./user-info-form";
 
 export default function Home() {
   return (
-    <h1></h1>
+    <SubscriptionProvider>
+      <UserInfoForm />
+   </SubscriptionProvider>
   );
 }
